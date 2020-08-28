@@ -12,6 +12,9 @@ repositories {
     mavenCentral()
 }
 
+bootJar {
+    mainClassName = 'com.momsee.momsee.MomseeSpringBoot2Application'
+}
 
 configurations {
 
