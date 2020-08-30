@@ -24,6 +24,7 @@ public class UserChildDAO {
     private final String CHILD_DELETE = "delete child where email=? and child_name=?";
     private final String CHILD_LIST = "select * from userchild where email=?";
     private final String UPDATE_LOCATION = "update userchild set latitude=? longitude=? where email=? and child_name=?";
+    private final String UPDATE_KEY = "update userchild set device_key=? where email=? and child_name=?";
     private final String GET_LOCATION = "select * from userchild where email=? and child_name=?";
 
     public void insertChild(UserChildVO vo) {
@@ -123,11 +124,10 @@ public class UserChildDAO {
     public void updateDeviceKey(UserChildVO vo) {
         try {
             conn = JDBCUtil.getConnection();
-            stmt = conn.prepareStatement(UPDATE_LOCATION);
-            stmt.setString(1, vo.getLatitude());
-            stmt.setString(2, vo.getLongitude());
-            stmt.setString(3, vo.getEmail());
-            stmt.setString(4, vo.getChild_name());
+            stmt = conn.prepareStatement(UPDATE_KEY);
+            stmt.setString(1, vo.getDevice_key());
+            stmt.setString(2, vo.getEmail());
+            stmt.setString(3, vo.getChild_name());
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
